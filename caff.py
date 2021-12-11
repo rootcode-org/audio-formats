@@ -60,7 +60,7 @@ class CAFF:
             elif chunk_type == 0x64617461:               # 'data'
                 self.data = stream.read_u8_array(chunk_size)
             else:
-                print ('WARNING: Unknown chunk type ' + hex(chunk_type))
+                print('WARNING: Unknown chunk type ' + hex(chunk_type))
                 stream.set_position(chunk_size, io.SEEK_CUR)
         stream.close()
 
@@ -75,4 +75,3 @@ class CAFF:
 
     def get_source_hash(self):
         return self.source_hash
-

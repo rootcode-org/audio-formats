@@ -107,7 +107,7 @@ class MP3:
                     stream.set_position(frame_size, io.SEEK_CUR)
         else:
             # Not an ID3 tag so reset stream pointer to start
-            stream.set_position(0)
+            stream.set_position(0, io.SEEK_SET)
 
         # Now parse the MP3 data
         frame_header = stream.read_u32()
@@ -127,7 +127,7 @@ class MP3:
             self.sample_rate = sample_rate_table[self.mpeg_version][self.sample_rate_index]
             self.channel_mode_name = channel_mode_table[self.channel_mode]
         else:
-            print ('ERROR: Frame synchronization not found')
+            print('ERROR: Frame synchronization not found')
 
         stream.close()
 
